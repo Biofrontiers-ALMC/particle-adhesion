@@ -1,13 +1,16 @@
 clearvars
 clc
 
-reader = BioformatsImage('D:\Projects\ALMC Tickets\KatieTrese\data\P2_A3_0117.nd2');
+reader = BioformatsImage('F:\trese\P2_A3_0114.nd2');
 
 %%
+
+[~, fn] = fileparts(reader.filename);
+
 L = LAPLinker;
 L.LinkScoreRange = [0 20];
 
-vid = VideoWriter('P2_A3_0117.avi');
+vid = VideoWriter([fn, '.avi']);
 vid.FrameRate = 5;
 open(vid)
 
@@ -84,7 +87,7 @@ close(vid)
 
 imshowpair(Iparticle, mask)
 
-save('P2_A3_0117.mat', 'L')
+save([fn, '.mat'], 'L')
 
 % 
 % 
